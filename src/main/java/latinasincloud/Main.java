@@ -22,7 +22,6 @@ public class Main {
             switch (opcionIngresada) {
                 case 1:
                     System.out.println("Tu saldo actual es: $" + saldo);
-
                     break;
 
                 case 2:
@@ -41,9 +40,18 @@ public class Main {
                     break;
 
                 case 3:
+                    System.out.println("Ingresa la cantifad que deseas retirar");
+                    int retiro = teclado.nextInt();
+                    if (retiro >0 && retiro <= saldo) {
+                        saldo -= retiro;
+                        System.out.println("Retiraste $" + retiro + " con éxito");
+                    } else if (retiro > saldo){
+                        System.out.println("Saldo insuficente");
+                    }
                     break;
 
                 case 4:
+                    System.out.println("¡Gracias por preferiencia!");
                     break;
 
                 default:
