@@ -1,17 +1,64 @@
 package latinasincloud;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner teclado =new Scanner(System.in);
+        int saldo = 0;
+        int opcionIngresada = 0;
+
+        do {
+            System.out.println("--- ¡Bienvenida! ¿Que deseas hacer hoy?");
+            System.out.println("1. Consultar saldo");
+            System.out.println("2. Depositar dinero");
+            System.out.println("3. Retirar Dinero");
+            System.out.println("4. Salir");
+            System.out.println(">Selecciona una opción: ");
+            opcionIngresada = teclado.nextInt();
+
+            teclado.nextLine();
+            switch (opcionIngresada) {
+                case 1:
+                    System.out.println("Tu saldo actual es: $" + saldo);
+                    break;
+
+                case 2:
+                    System.out.println("ingresa la cantidad que deseas depositar: ");
+
+                    int deposito = teclado.nextInt();
+
+                    teclado.nextLine();
+                    if (deposito > 0) {
+                        saldo += deposito;
+                        System.out.println("Depósitaste $" + deposito + " con éxito");
+                    } else {
+                        System.out.println("Error: ingresa un número positivo");
+                    }
+
+                    break;
+
+                case 3:
+                    System.out.println("Ingresa la cantifad que deseas retirar");
+                    int retiro = teclado.nextInt();
+                    if (retiro >0 && retiro <= saldo) {
+                        saldo -= retiro;
+                        System.out.println("Retiraste $" + retiro + " con éxito");
+                    } else if (retiro > saldo){
+                        System.out.println("Saldo insuficente");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("¡Gracias por preferiencia!");
+                    break;
+
+                default:
+                    System.out.println("Opción ingresada no es válida. Intenta nuevamente");
+                    break;
+            }
+        }while (opcionIngresada != 5);
+
         }
     }
-}
